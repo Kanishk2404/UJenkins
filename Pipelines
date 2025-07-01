@@ -15,6 +15,36 @@ post {  -> make sure this is in the same line as build
 
 use -p if the file is already created, it makes the file or dir if not present and if present appens them.
 
+use sh 'sleep 600' to put the job to sleep for 600 seconds
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('build') {
+            steps {
+                cleanWs()
+                echo 'building a new laptop ' 
+                sh 'mkdir -p build'
+                sh 'touch build/computer.txt'
+                sh ' echo "Mainboard">>build/computer.txt'
+                sh 'cat build/computer.txt'
+                sh ' echo "Display">>build/computer.txt'
+                sh 'cat build/computer.txt'
+                sh ' echo "Mouse">>build/computer.txt'
+                sh 'cat build/computer.txt'
+                
+            }
+        }
+    }
+    post {
+         success{
+             archiveArtifacts artifacts: 'build/**'       
+             }
+         }
+    }
+
 
 
 
