@@ -1,0 +1,3 @@
+Jenkins Server ( controller ) -> stores the results, manages the pipelines and the jobs associated
+Jenkins agent - executes a stage/job. working jenkins setup may have one or more agents.
+
