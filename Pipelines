@@ -1,0 +1,10 @@
+create a job, as laptop-config
+piplines
+sample hello world, replacce hello with build as it is build stage
+echo 'building a new laptop ' 
+sh 'mkdir build'
+sh 'touch build/computer.txt'
+sh ' echo "Mainboard">>build/computer.txt'
+sh 'cat build/computer.txt'
+
+use -p if the file is already created, it makes the file or dir if not present and if present appens them.
