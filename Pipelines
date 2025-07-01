@@ -7,4 +7,14 @@ sh 'touch build/computer.txt'
 sh ' echo "Mainboard">>build/computer.txt'
 sh 'cat build/computer.txt'
 
+post {  -> make sure this is in the same line as build
+      always {
+              cleanWs()
+              }
+      }
+
 use -p if the file is already created, it makes the file or dir if not present and if present appens them.
+
+
+
+
