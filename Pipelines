@@ -48,3 +48,41 @@ pipeline {
 
 
 
+
+
+pipeline {
+    agent any
+
+    environment {
+        BUILD_FILE_NAME = 'laptop.txt'
+    }
+
+    stages {
+        stage('build') {
+            steps {
+                cleanWs()
+                echo 'building a new laptop' 
+                echo "$BUILD_FILE_NAME"
+                sh '''
+                    mkdir -p build
+                    touch build/computer.txt
+                    echo "Mainboard" >> build/$BUILD_FILE_NAME
+                    cat build/computer.txt
+                    echo "Display" >> build/$BUILD_FILE_NAME
+                    cat build/computer.txt
+                    echo "Mouse" >> build/computer.txt
+                    cat build/computer.txt
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            archiveArtifacts artifacts: 'build/**'
+        }
+    }
+}
+
+
+
